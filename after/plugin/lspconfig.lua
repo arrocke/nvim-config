@@ -41,25 +41,21 @@ require('mason-lspconfig').setup({
     lua_ls = function()
       require('lspconfig').lua_ls.setup({
         capabilities = lsp_capabilities,
-	settings = {
-		Lua = {
-			runtime = {
-				version = 'LuaJIT'
-			},
-			diagnostics = {
-				globals = {'vim'},
-			},
-			workspace = {
-				library = {
-					vim.env.VIMRUNTIME,
-				}
-			}
-		}
-	}
-        ---
-        -- This is where you place
-        -- your custom config
-        ---
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT'
+                },
+                diagnostics = {
+                    globals = {'vim'},
+                },
+                workspace = {
+                    library = {
+                        vim.env.VIMRUNTIME,
+                    }
+                }
+            }
+        }
       })
     end,
   }
