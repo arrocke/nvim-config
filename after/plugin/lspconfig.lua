@@ -43,6 +43,28 @@ require('mason-lspconfig').setup({
   ensure_installed = {},
   handlers = {
     default_setup,
+    tsserver = function()
+        local mason_registry = require('mason-registry')
+        local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+
+        require('lspconfig').tsserver.setup{
+          capabilities = lsp_capabilities,
+          filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
+          },
+          init_options = {
+                plugins = {
+                  {
+                    name = '@vue/typescript-plugin',
+                    location = vue_language_server_path,
+                    languages = { 'vue' },
+                  },
+                },
+              }
+        }
+    end,
     lua_ls = function()
       require('lspconfig').lua_ls.setup({
         capabilities = lsp_capabilities,
