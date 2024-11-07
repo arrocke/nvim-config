@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 require("test.lazy")
+require("test.format")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
