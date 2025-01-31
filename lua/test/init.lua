@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 
 require("test.lazy")
 require("test.format")
+require("test.webflow")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
