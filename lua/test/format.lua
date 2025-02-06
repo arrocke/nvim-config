@@ -5,8 +5,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     desc = "Auto-format with Prettier after saving",
     callback = function()
         local fileName = vim.api.nvim_buf_get_name(0)
-        vim.cmd(":silent !prettier " .. fileName .. " --write --log-level silent")
-        vim.cmd(":redraw!")
+        vim.cmd(":silent !npx prettier " .. fileName .. " --write --log-level silent")
     end,
     group = autocmd_group,
 })
