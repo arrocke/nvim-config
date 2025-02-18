@@ -55,6 +55,7 @@ require('mason-lspconfig').setup({
             "vue",
           },
           init_options = {
+              maxTsServerMemory = 10240,
                 plugins = {
                   {
                     name = '@vue/typescript-plugin',
