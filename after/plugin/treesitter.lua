@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "bash", "html", "css", "javascript", "typescript", "go", "c", "lua", "vim", "vimdoc", "sql" },
+  ensure_installed = { "bash", "html", "css", "javascript", "typescript", "go", "c", "lua", "vim", "vimdoc", "sql", "templ" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -23,3 +23,9 @@ require'nvim-treesitter.configs'.setup {
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
+
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})
