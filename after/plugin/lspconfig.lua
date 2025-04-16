@@ -51,7 +51,9 @@ require('mason-lspconfig').setup({
           capabilities = lsp_capabilities,
           filetypes = {
             "javascript",
+            "javascriptreact",
             "typescript",
+            "typescriptreact",
             "vue",
           },
           init_options = {
