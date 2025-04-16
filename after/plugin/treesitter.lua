@@ -29,3 +29,7 @@ vim.filetype.add({
         templ = "templ",
     },
 })
+
+require'treesitter-context'.setup {
+  multiline_threshold = 1
+}
