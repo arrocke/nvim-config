@@ -38,6 +38,9 @@ local default_setup = function(server)
   })
 end
 
+local plugin = require("lazy.core.config").plugins["mason.nvim"]
+
+if plugin and plugin._.loaded then
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {},
@@ -90,6 +93,11 @@ require('mason-lspconfig').setup({
     end,
   }
 })
+
+else
+  require("lspconfig").rust_analyzer.setup({})
+end
+
 
 local cmp = require('cmp')
 

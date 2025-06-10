@@ -20,8 +20,15 @@ require("lazy").setup({
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	    {
+		"williamboman/mason.nvim",
+		enabled = function()
+		    return vim.fn.filereadable("/etc/NIXOS") == 0
+		end,
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+		}
+	    },
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
