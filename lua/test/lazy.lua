@@ -35,4 +35,10 @@ require("lazy").setup({
     { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } },
     { 'nvim-treesitter/nvim-treesitter-context' },
     { 'augmentcode/augment.vim' },
+    { 'nvimtools/none-ls.nvim', dependencies = { "nvim-lua/plenary.nvim" }, opts = function() return {
+        sources = {
+          require("null-ls").builtins.formatting.prettier,
+        }
+    } end
+    }
 })
