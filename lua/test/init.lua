@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 require("test.lazy")
 require("test.format")
 require("test.webflow")
+require("test.notes")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
