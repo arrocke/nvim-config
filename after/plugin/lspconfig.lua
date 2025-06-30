@@ -95,7 +95,18 @@ require('mason-lspconfig').setup({
 })
 
 else
-  require("lspconfig").rust_analyzer.setup({})
+  require("lspconfig").rust_analyzer.setup({
+          capabilities = lsp_capabilities,
+  })
+  require("lspconfig").ts_ls.setup({
+          capabilities = lsp_capabilities,
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+          },
+  })
 end
 
 
