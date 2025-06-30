@@ -20,7 +20,7 @@ require("lazy").setup({
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 	"neovim/nvim-lspconfig",
-	    {
+	{
 		"williamboman/mason.nvim",
 		enabled = function()
 		    return vim.fn.filereadable("/etc/NIXOS") == 0
@@ -28,17 +28,34 @@ require("lazy").setup({
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 		}
-	    },
+	},
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
     { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } },
     { 'nvim-treesitter/nvim-treesitter-context' },
-    { 'augmentcode/augment.vim' },
-    { 'nvimtools/none-ls.nvim', dependencies = { "nvim-lua/plenary.nvim" }, opts = function() return {
-        sources = {
-          require("null-ls").builtins.formatting.prettier,
+    {
+        'augmentcode/augment.vim',
+        enabled = function ()
+            return vim.fn.executable('node') == 1
+        end
+    },
+    {
+      'nvimtools/none-ls.nvim',
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = function()
+        local null_ls = require("null-ls")
+        local sources = {}
+
+        -- Check for local Prettier
+        local prettier_path = vim.fn.getcwd() .. "/node_modules/.bin/prettier"
+        if vim.fn.filereadable(prettier_path) == 1 then
+          table.insert(sources, null_ls.builtins.formatting.prettier)
+        end
+
+        return {
+          sources = sources,
         }
-    } end
+      end,
     }
 })
