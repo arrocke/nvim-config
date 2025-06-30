@@ -9,7 +9,7 @@ function scaffold_note()
     local filename = note_title:lower():gsub("%s+", "-") .. '.md'
     vim.cmd("edit " .. filename)
 
-    local uuid = vim.fn.system("uuidgen -7"):gsub("%s+", "")
+    local uuid = vim.fn.system("uuidgen"):gsub("%s+", "")
     local timestamp = os.date("%Y-%m-%dT%H:%M:%S")
 
     local frontmatter = {
