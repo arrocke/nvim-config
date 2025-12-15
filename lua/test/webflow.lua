@@ -12,7 +12,7 @@ vim.keymap.set('n', '<Leader>rt', function()
             vim.cmd("wincmd l")
             termWindow = vim.api.nvim_get_current_win()
         end
-        vim.cmd("term ./bin/babel-mocha " .. path)
+        vim.cmd("term source .env && ./bin/babel-mocha " .. path)
         vim.api.nvim_set_current_win(currentWin)
     end
 end)
