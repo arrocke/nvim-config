@@ -14,13 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 require("lazy").setup({ 
     {import = "plugins"},
-	{ 'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-	{ "ThePrimeagen/harpoon", branch = "harpoon2", dependencies = { "nvim-lua/plenary.nvim" } },
-	{ "mbbill/undotree" },
-	{ "tpope/vim-fugitive" },
-	"L3MON4D3/LuaSnip",
     { 'nvim-treesitter/nvim-treesitter-context' },
     {
         'augmentcode/augment.vim',
