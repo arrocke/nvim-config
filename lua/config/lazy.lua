@@ -21,7 +21,6 @@ require("lazy").setup({
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 	"L3MON4D3/LuaSnip",
-    { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } },
     { 'nvim-treesitter/nvim-treesitter-context' },
     {
         'augmentcode/augment.vim',
