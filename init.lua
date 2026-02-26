@@ -1,2 +1,1 @@
-require("test")
-print("hello")
+require("config")

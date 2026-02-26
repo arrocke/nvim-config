@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
 
-require("test.lazy")
-require("test.format")
-require("test.webflow")
-require("test.notes")
+require("config.lazy")
+require("config.format")
+require("config.webflow")
+require("config.notes")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 

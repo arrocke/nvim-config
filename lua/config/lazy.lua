@@ -13,24 +13,13 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 require("lazy").setup({ 
+    {import = "plugins"},
 	{ 'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 	{ "ThePrimeagen/harpoon", branch = "harpoon2", dependencies = { "nvim-lua/plenary.nvim" } },
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
-	"neovim/nvim-lspconfig",
-	{
-		"williamboman/mason.nvim",
-		enabled = function()
-		    return vim.fn.filereadable("/etc/NIXOS") == 0
-		end,
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-		}
-	},
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
     { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } },
     { 'nvim-treesitter/nvim-treesitter-context' },
