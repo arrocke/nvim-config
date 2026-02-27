@@ -21,7 +21,12 @@ return {
                 },
             })
             vim.lsp.enable({
-                'lua_ls'
+                'lua_ls',
+                'cssls',
+                'html',
+                'ts_ls',
+                'jsonls',
+                'tailwindcss',
             })
 
             -- note: diagnostics are not exclusive to lsp servers
