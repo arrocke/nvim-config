@@ -1,9 +1,5 @@
 vim.g.mapleader = " "
 
-require("config.lazy")
-require("config.webflow")
-require("config.notes")
-
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Paste without losing clipboard
@@ -26,7 +22,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 
-vim.cmd("colorscheme rose-pine")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
