@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 
 require("config.lazy")
-require("config.format")
 require("config.webflow")
 require("config.notes")
 
