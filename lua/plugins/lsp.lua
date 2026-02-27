@@ -3,6 +3,23 @@ return {
         "neovim/nvim-lspconfig",
         tag = "2.6.0",
         config = function()
+            vim.lsp.config('lua_ls', {
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT'
+                        },
+                        diagnostics = {
+                            globals = {'vim'},
+                        },
+                        workspace = {
+                           library = {
+                               vim.env.VIMRUNTIME,
+                           },
+                        },
+                    },
+                },
+            })
             vim.lsp.enable({
                 'lua_ls'
             })
