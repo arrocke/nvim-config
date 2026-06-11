@@ -24,9 +24,9 @@ return {
                 'lua_ls',
                 'cssls',
                 'html',
-                'ts_ls',
                 'jsonls',
                 'tailwindcss',
+                'tsgo'
             })
 
             -- note: diagnostics are not exclusive to lsp servers
