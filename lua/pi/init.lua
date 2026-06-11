@@ -19,14 +19,15 @@ local function win_valid()
 end
 
 local function open()
-  vim.cmd("botright vsplit")
+  vim.cmd("vsplit")
+  vim.cmd("wincmd L")
   local win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_width(win, win_width())
 
-  -- Disable visual clutter in the terminal pane
   vim.wo[win].number = false
   vim.wo[win].relativenumber = false
   vim.wo[win].signcolumn = "no"
+  vim.wo[win].winfixwidth = true
 
   if buf_valid() then
     vim.api.nvim_win_set_buf(win, state.buf)
@@ -44,6 +45,7 @@ local function open()
         state.chan = nil
       end,
     })
+
     vim.api.nvim_create_autocmd("BufEnter", {
       buffer = buf,
       callback = function() vim.cmd("startinsert") end,
@@ -120,9 +122,25 @@ function M.send_selection()
   end)
 end
 
-vim.keymap.set("n", "<leader>pf", M.focus, { desc = "Focus pi terminal" })
-vim.keymap.set({ "n", "t" }, "<leader>pt", M.toggle, { desc = "Toggle pi terminal" })
-vim.keymap.set("x", "<leader>py", M.send_selection, { desc = "Send selection to pi" })
+-- Re-hoist pi to the top-level layout after any new window opens.
+-- topleft splits (e.g. fugitive) root themselves above everything, so we
+-- re-run wincmd L on pi to push them back into the left subtree.
+vim.api.nvim_create_autocmd("WinNew", {
+  callback = function()
+    vim.schedule(function()
+      if win_valid() then
+        vim.api.nvim_win_call(state.win, function()
+          vim.cmd("wincmd L")
+          vim.api.nvim_win_set_width(state.win, win_width())
+        end)
+      end
+    end)
+  end,
+})
+
+vim.keymap.set("n", "<leader>af", M.focus, { desc = "Focus pi terminal" })
+vim.keymap.set({ "n", "t" }, "<leader>at", M.toggle, { desc = "Toggle pi terminal" })
+vim.keymap.set("x", "<leader>ay", M.send_selection, { desc = "Send selection to pi" })
 
 -- Navigate out of terminals to other windows
 for _, key in ipairs({ "w", "h", "j", "k", "l" }) do
