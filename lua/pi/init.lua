@@ -139,7 +139,7 @@ vim.api.nvim_create_autocmd("WinNew", {
 })
 
 vim.keymap.set("n", "<leader>af", M.focus, { desc = "Focus pi terminal" })
-vim.keymap.set({ "n", "t" }, "<leader>at", M.toggle, { desc = "Toggle pi terminal" })
+vim.keymap.set("n", "<leader>at", M.toggle, { desc = "Toggle pi terminal" })
 vim.keymap.set("x", "<leader>ay", M.send_selection, { desc = "Send selection to pi" })
 
 -- Navigate out of terminals to other windows
