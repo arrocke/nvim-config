@@ -2,7 +2,11 @@ return {
     {
         "neovim/nvim-lspconfig",
         tag = "2.6.0",
+        dependencies = { "saghen/blink.cmp" },
         config = function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
+
             vim.lsp.config('lua_ls', {
                 settings = {
                     Lua = {
@@ -26,7 +30,9 @@ return {
                 'html',
                 'jsonls',
                 'tailwindcss',
-                'tsgo'
+                'tsgo',
+                'eslint',
+                'zls'
             })
 
             -- note: diagnostics are not exclusive to lsp servers
@@ -61,7 +67,20 @@ return {
         tag = "v1.9.1",
         opts = {
             keymap = { preset = 'super-tab' },
-            fuzzy = { implementation = "lua" }
+            fuzzy = { implementation = "lua" },
+            sources = {
+                default = { "lsp", "path", "snippets" },
+            },
+            completion = {
+                menu = {
+                    draw = {
+                        columns = {
+                            { "label", "label_description", gap = 1 },
+                            { "kind_icon", "kind" }
+                        },
+                    }
+                }
+            }
         },
     },
     {
