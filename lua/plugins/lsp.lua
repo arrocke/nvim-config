@@ -32,7 +32,8 @@ return {
                 'tailwindcss',
                 'tsgo',
                 'eslint',
-                'zls'
+                'zls',
+                'gopls'
             })
 
             -- note: diagnostics are not exclusive to lsp servers
@@ -88,7 +89,12 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local null_ls = require("null-ls")
-            local sources = {}
+            local sources = {
+                sources = {
+                    null_ls.builtins.formatting.gofmt,
+                    null_ls.builtins.formatting.goimports,
+                },
+            }
 
             -- Check for local Prettier
             local prettier_path = vim.fn.getcwd() .. "/node_modules/.bin/prettier"
@@ -112,7 +118,7 @@ return {
             end
 
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.vue", "*.css", "*.scss", "*.html", "*.json", "*.md", "*.rs" },
+                pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.vue", "*.css", "*.scss", "*.html", "*.json", "*.md", "*.rs", "*.zig", "*.go" },
                 callback = function()
                     if not is_null_ls_available() then
                         return
