@@ -99,7 +99,7 @@ return {
             -- Check for local Prettier
             local prettier_path = vim.fn.getcwd() .. "/node_modules/.bin/prettier"
             if vim.fn.filereadable(prettier_path) == 1 then
-                table.insert(sources, null_ls.builtins.formatting.prettier)
+                table.insert(sources.sources, null_ls.builtins.formatting.prettier)
             end
 
             null_ls.setup({

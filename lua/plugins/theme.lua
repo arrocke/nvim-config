@@ -11,29 +11,20 @@ return {
         dependencies = { 'nvim-treesitter/nvim-treesitter-context' },
         build = ":TSUpdate",
         config = function ()
-            require('nvim-treesitter.configs').setup {
-              sync_install = false,
-              auto_install = true,
-              ensure_installed = {
-                  "bash",
-                  "html",
-                  "css",
-                  "javascript",
-                  "typescript",
-                  "go",
-                  "c",
-                  "lua",
-                  "vim",
-                  "vimdoc",
-                  "sql",
-                  "templ"
-              },
-
-              highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-              },
-            }
+            require("nvim-treesitter").install({
+                "bash",
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "go",
+                "c",
+                "lua",
+                "vim",
+                "vimdoc",
+                "sql",
+                "templ",
+            })
 
             vim.filetype.add({
                 extension = {
