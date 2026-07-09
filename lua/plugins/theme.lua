@@ -8,6 +8,7 @@ return {
     },
 	{
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
         dependencies = { 'nvim-treesitter/nvim-treesitter-context' },
         build = ":TSUpdate",
         config = function ()

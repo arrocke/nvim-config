@@ -45,4 +45,13 @@ return {
             vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
         end
     },
+    {
+      'nvim-mini/mini.diff',
+      version = false,
+      config = function()
+        require("mini.diff").setup({
+          source = require("mini.diff").gen_source.git(),
+        })
+      end,
+    },
 }
