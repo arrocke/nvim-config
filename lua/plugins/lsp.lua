@@ -33,7 +33,8 @@ return {
                 'tsgo',
                 'eslint',
                 'zls',
-                'gopls'
+                'gopls',
+                'dartls',
             })
 
             -- note: diagnostics are not exclusive to lsp servers
